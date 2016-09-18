@@ -69,32 +69,10 @@ describe 'search-query' do
   describe Sentence do
     let(:sentence) { Sentence.new }
 
-    context 'update_ranking' do
+    context 'update_search_ranking' do
       it 'increases search ranking by one' do
-        sentence.update_ranking
+        sentence.update_search_ranking
         expect(sentence.search_ranking).to eq 1
-      end
-    end
-  end
-
-  describe Word do
-    let(:word) { Word.new }
-
-    context 'is_word' do
-      let(:words) { ['hello', 'goodbye'] }
-
-      it 'returns a boolean' do
-        expect(word.is_word(words)).to be(true).or be(false)
-      end
-
-      it 'returns false when the argument does not contain the word text' do
-        word.text = 'whatever'
-        expect(word.is_word(words)).to be false
-      end
-
-      it 'returns true when the word text is the same as the argument' do
-        word.text = 'hello'
-        expect(word.is_word(words)).to be true
       end
     end
   end

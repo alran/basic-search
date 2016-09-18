@@ -7,7 +7,7 @@ class Sentence
     @search_ranking = 0
   end
 
-  def update_ranking
+  def update_search_ranking
     @search_ranking += 1
   end
 end

@@ -1,6 +1,5 @@
 require_relative 'sentence'
 require_relative 'snippet'
-require_relative 'word'
 
 class Document
 
@@ -15,22 +14,20 @@ class Document
   def analyze_sentences(query_words)
     sentence_idx, char_idx = 0, 0
     sentence = Sentence.new
-    word = Word.new
+    word = ''
 
     until @document[char_idx] == nil
       character = @document[char_idx]
       sentence.text += character unless sentence.text == '' && character == ' '
-      if character == ' '
-        sentence.update_ranking if word.is_word(query_words)
-        word = Word.new
-      else
-        if ['.', ';', '!', '?'].include?(character)
-          @sentences[sentence_idx] = sentence
-          sentence_idx += 1
-          sentence = Sentence.new
-        elsif character =~ /[A-Za-z]/ || character == '-'
-          word.text += character.downcase
-        end
+      if character =~ /[A-Za-z]/ || character == '-'
+        word += character.downcase
+      elsif ['.', ';', '!', '?'].include?(character)
+        @sentences[sentence_idx] = sentence
+        sentence_idx += 1
+        sentence = Sentence.new
+      elsif character == ' '
+        sentence.update_search_ranking if query_words.include?(word)
+        word = ''
       end
       char_idx += 1
     end
