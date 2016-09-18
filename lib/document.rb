@@ -21,7 +21,7 @@ class Document
       character = @document[char_idx]
       sentence.text += character unless sentence.text == '' && character == ' '
       if character == ' '
-        sentence.update_ranking(word) if word.is_word(query_words)
+        sentence.update_ranking if word.is_word(query_words)
         word = Word.new()
       else
         if ['.', ';', '!', '?'].include?(character)

@@ -70,9 +70,8 @@ describe 'search-query' do
     let(:sentence) { Sentence.new() }
 
     context 'update_ranking' do
-      it 'stores words and increases search ranking' do
-        sentence.update_ranking('hello')
-        expect(sentence.matching_words.length).to eq 1
+      it 'increases search ranking by one' do
+        sentence.update_ranking
         expect(sentence.search_ranking).to eq 1
       end
     end
