@@ -1,5 +1,4 @@
 require_relative 'search-query'
-require_relative 'lib/document'
 
 describe 'search-query' do
   let(:search_query) { 'designer kitchen' }
@@ -68,12 +67,11 @@ describe 'search-query' do
   end
 
   describe Sentence do
-    let(:sentence) { Sentence.new(0) }
+    let(:sentence) { Sentence.new() }
 
     context 'update_ranking' do
-      it 'stores words and increases search ranking' do
-        sentence.update_ranking('hello')
-        expect(sentence.matching_words.length).to eq 1
+      it 'increases search ranking by one' do
+        sentence.update_ranking
         expect(sentence.search_ranking).to eq 1
       end
     end
@@ -106,7 +104,7 @@ describe 'search-query' do
 
     context 'add_sentence' do
       it 'updates the snippet text with spacing and search_ranking' do
-        sentence = Sentence.new(0)
+        sentence = Sentence.new()
         sentence.text = 'the big yellow house'
         sentence.search_ranking = 1
         snippet.add_sentence(sentence)

@@ -14,20 +14,20 @@ class Document
 
   def analyze_sentences(query_words)
     sentence_idx, char_idx = 0, 0
-    sentence = Sentence.new(sentence_idx)
+    sentence = Sentence.new()
     word = Word.new()
 
     until @document[char_idx] == nil
       character = @document[char_idx]
       sentence.text += character unless sentence.text == '' && character == ' '
       if character == ' '
-        sentence.update_ranking(word) if word.is_word(query_words)
+        sentence.update_ranking if word.is_word(query_words)
         word = Word.new()
       else
         if ['.', ';', '!', '?'].include?(character)
           @sentences[sentence_idx] = sentence
           sentence_idx += 1
-          sentence = Sentence.new(sentence_idx)
+          sentence = Sentence.new()
         elsif character =~ /[A-Za-z]/ || character == '-'
           word.text += character.downcase
         end
