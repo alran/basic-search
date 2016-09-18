@@ -84,7 +84,7 @@ describe 'search-query' do
       it 'updates the snippet text with spacing and search_ranking' do
         sentence = Sentence.new()
         sentence.text = 'the big yellow house'
-        sentence.search_ranking = 1
+        sentence.update_search_ranking
         snippet.add_sentence(sentence)
         expect(snippet.search_ranking).to eq 1
         expect(snippet.text).to eq 'the big yellow house '
