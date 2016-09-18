@@ -5,7 +5,7 @@ class Snippet
 
   def initialize()
     @text = ''
-    @last_ranked_index = 0
+    @last_ranked_index = nil
     @search_ranking = 0
   end
 
