@@ -37,7 +37,7 @@ class Document
   end
 
   def get_most_relevant_snippet
-    @snippets.max_by { |snippet| snippet.search_ranking }.text
+    @snippets.max_by { |snippet| snippet.search_ranking }.text if @snippets.any?
   end
 
   def get_matching_snippets

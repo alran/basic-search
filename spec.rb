@@ -55,10 +55,14 @@ describe 'search-query' do
     end
 
     context 'get_most_relevant_snippet' do
-      it 'returns a string' do
+      it 'returns a string if there are relevant snippets' do
         document.analyze_sentences(search_query)
         document.get_matching_snippets
         expect(document.get_most_relevant_snippet).to be_kind_of String
+      end
+
+      it 'returns nil if no relevant snippets were found' do
+        expect(document.get_most_relevant_snippet).to be nil
       end
     end
   end
