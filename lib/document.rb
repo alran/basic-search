@@ -26,7 +26,7 @@ class Document
         sentence_idx += 1
         sentence = Sentence.new
       elsif character == ' '
-        sentence.update_ranking if query_words.include?(word)
+        sentence.update_search_ranking if query_words.include?(word)
         word = ''
       end
       char_idx += 1

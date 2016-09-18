@@ -69,9 +69,9 @@ describe 'search-query' do
   describe Sentence do
     let(:sentence) { Sentence.new }
 
-    context 'update_ranking' do
+    context 'update_search_ranking' do
       it 'increases search ranking by one' do
-        sentence.update_ranking
+        sentence.update_search_ranking
         expect(sentence.search_ranking).to eq 1
       end
     end
