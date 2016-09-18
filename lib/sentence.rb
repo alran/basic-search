@@ -1,6 +1,7 @@
 class Sentence
 
-  attr_accessor :text, :search_ranking
+  attr_accessor :text
+  attr_reader :search_ranking
 
   def initialize()
     @text = ''
