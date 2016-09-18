@@ -1,5 +1,3 @@
-require 'pry'
-
 require_relative 'lib/document'
 
 def generate_snippet(document_text, query)
