@@ -60,6 +60,6 @@ class Document
   private
 
   def nearby_ranked_sentence(snippet, index)
-    index != 0 && snippet.last_ranked_index >= index - 2 && (@sentences[index + 1] ? @sentences[index + 1].search_ranking > 0 : false)
+    index != 0 && snippet.last_ranked_index >= index - 1 && (@sentences[index + 1] ? @sentences[index + 1].search_ranking > 0 : false)
   end
 end
