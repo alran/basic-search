@@ -77,28 +77,6 @@ describe 'search-query' do
     end
   end
 
-  describe Word do
-    let(:word) { Word.new }
-
-    context 'is_word' do
-      let(:words) { ['hello', 'goodbye'] }
-
-      it 'returns a boolean' do
-        expect(word.is_word(words)).to be(true).or be(false)
-      end
-
-      it 'returns false when the argument does not contain the word text' do
-        word.text = 'whatever'
-        expect(word.is_word(words)).to be false
-      end
-
-      it 'returns true when the word text is the same as the argument' do
-        word.text = 'hello'
-        expect(word.is_word(words)).to be true
-      end
-    end
-  end
-
   describe Snippet do
     let(:snippet) { Snippet.new }
 
