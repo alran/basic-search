@@ -1,5 +1,4 @@
 require_relative 'search-query'
-require_relative 'lib/document'
 
 describe 'search-query' do
   let(:search_query) { 'designer kitchen' }
