@@ -67,7 +67,7 @@ describe 'search-query' do
   end
 
   describe Sentence do
-    let(:sentence) { Sentence.new() }
+    let(:sentence) { Sentence.new }
 
     context 'update_ranking' do
       it 'increases search ranking by one' do
@@ -78,7 +78,7 @@ describe 'search-query' do
   end
 
   describe Word do
-    let(:word) { Word.new() }
+    let(:word) { Word.new }
 
     context 'is_word' do
       let(:words) { ['hello', 'goodbye'] }
@@ -100,7 +100,7 @@ describe 'search-query' do
   end
 
   describe Snippet do
-    let(:snippet) { Snippet.new() }
+    let(:snippet) { Snippet.new }
 
     context 'add_sentence' do
       it 'updates the snippet text with spacing and search_ranking' do
