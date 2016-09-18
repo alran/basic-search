@@ -14,7 +14,7 @@ class Document
 
   def analyze_sentences(query_words)
     sentence_idx, char_idx = 0, 0
-    sentence = Sentence.new(sentence_idx)
+    sentence = Sentence.new()
     word = Word.new()
 
     until @document[char_idx] == nil
@@ -27,7 +27,7 @@ class Document
         if ['.', ';', '!', '?'].include?(character)
           @sentences[sentence_idx] = sentence
           sentence_idx += 1
-          sentence = Sentence.new(sentence_idx)
+          sentence = Sentence.new()
         elsif character =~ /[A-Za-z]/ || character == '-'
           word.text += character.downcase
         end

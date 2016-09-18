@@ -67,7 +67,7 @@ describe 'search-query' do
   end
 
   describe Sentence do
-    let(:sentence) { Sentence.new(0) }
+    let(:sentence) { Sentence.new() }
 
     context 'update_ranking' do
       it 'stores words and increases search ranking' do
@@ -105,7 +105,7 @@ describe 'search-query' do
 
     context 'add_sentence' do
       it 'updates the snippet text with spacing and search_ranking' do
-        sentence = Sentence.new(0)
+        sentence = Sentence.new()
         sentence.text = 'the big yellow house'
         sentence.search_ranking = 1
         snippet.add_sentence(sentence)
