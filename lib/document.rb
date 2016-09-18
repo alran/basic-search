@@ -1,6 +1,5 @@
 require_relative 'sentence'
 require_relative 'snippet'
-require_relative 'word'
 
 class Document
 
@@ -20,17 +19,15 @@ class Document
     until @document[char_idx] == nil
       character = @document[char_idx]
       sentence.text += character unless sentence.text == '' && character == ' '
-      if character == ' '
+      if character =~ /[A-Za-z]/ || character == '-'
+        word += character.downcase
+      elsif ['.', ';', '!', '?'].include?(character)
+        @sentences[sentence_idx] = sentence
+        sentence_idx += 1
+        sentence = Sentence.new
+      elsif character == ' '
         sentence.update_ranking if query_words.include?(word)
         word = ''
-      else
-        if ['.', ';', '!', '?'].include?(character)
-          @sentences[sentence_idx] = sentence
-          sentence_idx += 1
-          sentence = Sentence.new
-        elsif character =~ /[A-Za-z]/ || character == '-'
-          word += character.downcase
-        end
       end
       char_idx += 1
     end
